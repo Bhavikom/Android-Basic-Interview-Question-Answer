@@ -115,3 +115,32 @@
 	Manual thread management
 	Code may become difficult to read.
   
+**11. What is Lopper and how it works ?** 
+
+	Looper is a class which is used to execute the Messages(Runnables) in a queue. Normal threads have no such queue, 
+	e.g. simple thread does not have any queue. It executes once and after method execution finishes, the thread will not run another Message(Runnable).
+	
+	If someone wants to execute multiple messages(Runnables) then he should use the Looper class which is responsible for creating a queue in the thread. 
+	For example, while writing an application that downloads files from the internet, we can use Looper class to put files to be downloaded in the queue.
+	
+**12. What are Handlers ?** 	
+
+	Handlers are objects for managing threads. It receives messages and writes code on how to handle the message.
+	They run outside of the activity’s lifecycle, so they need to be cleaned up properly or else you will have thread leaks.
+	Handlers allow communicating between the background thread and the main thread.
+	
+**13. Describe different types of Services in Android  ?**
+
+	A Service is an application component that can perform long-running operations in the background, and it doesn't provide a user interface. 
+	It can run in the background, even when the user is not interacting with your application. These are the three different types of services:
+
+	Foreground Service: 
+	A foreground service performs some operation that is noticeable to the user. For example, we can use a foreground service to play an audio track.
+
+	Background Service: 
+	A background service performs an operation that isn’t directly noticed by the user. In Android API level 26 and above, there are restrictions to using background services and it is recommended to use WorkManager in these cases.
+
+	Bound Service: A service is bound when an application component binds to it by calling bindService(). A bound service offers a client-server interface that allows components to interact with the service, send requests, receive results. A bound service runs only as long as another application component is bound to it.
+
+	
+	
