@@ -233,6 +233,43 @@
 
 	apply() is asynchronous and it won’t return any boolean response. Also if there is an apply() outstanding and we perform another commit(),
 	The commit() will be blocked until the apply() is not completed.
+	
+**23. How Android apps compiled and run ?**
+
+	First step involves compiling the resources folder (/res) using the aapt (android asset packaging tool) tool. 
+	These are compiled to a single class file called R.java. This is a class that just contains constants.
+
+	Second step involves the java source code being compiled to .class files by javac, and then the class files are 
+	converted to Dalvik bytecode by the “dx” tool, which is included in the sdk ‘tools’. The output is classes.dex.
+
+	The final step involves the android apkbuilder which takes all the input and builds the apk (android packaging key) file.
+	
+**24. What Is the Singleton Pattern ?**
+
+	The Singleton Pattern is a software design pattern that guarantees a class has one instance only and a global point of 
+	access to it is provided by that class. Anytime multiple classes or clients request for that class, they get the same instance of the class. 
+	This Singleton class may be responsible for instantiating itself, or you can delegate the object creation to a factory class
+	
+	In a typical Android app, there are many objects for which we only need one global instance, whether you are using 
+	it directly or simply passing it to another class. Examples include caches, OkHttpClient, HttpLoggingInterceptor, 
+	Retrofit, Gson, SharedPreferences, the repository class, etc. If we were to instantiate more than one of these 
+	types of objects, we'd run into problems like incorrect app behaviour, resource overuse, and other confusing results. 
+	
+	It's quite easy to implement this pattern. The following code snippet shows how a Singleton is created.
+
+	public class Singleton  {
+    		private static Singleton INSTANCE = null;
+    		// other instance variables can be here 
+    
+    		private Singleton() {};
+    		public static Singleton getInstance() {
+        	if (INSTANCE == null) {
+            		INSTANCE = new Singleton();
+        	}
+        	return(INSTANCE);
+    	}
+ 	// other instance methods can follow 
+}
 
 
 
