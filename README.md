@@ -209,6 +209,31 @@
 	and often deciding on their own when to disappear. DialogFragment needs to ensure that what is happening 
 	with the Fragment and Dialog states remains consistent. To do this, it watches for dismiss events from 
 	the dialog and takes care of removing its own state when they happen.
+	
+**21. What is the difference between Foreground and Background and Bounded service ?**
+
+	Foreground Service: A foreground service performs some operation that is noticeable to the user. 
+	For example, we can use a foreground service to play an audio track. A Notification must be displayed to the user.
+
+	Background Service: A background service performs an operation that isn’t directly noticed by the user. 
+	In Android API level 26 and above, there are restrictions to using background services and it is recommended to use WorkManager in these cases
+
+	Bound Service: A service is bound when an application component binds to it by calling bindService(). 
+	A bound service offers a client-server interface that allows components to interact with the service, send requests, receive results. 
+	A bound service runs only as long as another application component is bound to it.
+	
+**21. What is contentProvider and what is typically used for ?**
+
+	A ContentProvider provides data from one application to another, when requested. It manages access to a structured set of data. 
+	It provides mechanisms for defining data security. Learn more. For further reading see the official android documentation
+	
+**22. What is the difference between apply() and commit() in sharedPreferences ?**
+
+	commit() writes the data synchronously and returns a boolean value of success or failure depending on the result immediately.
+
+	apply() is asynchronous and it won’t return any boolean response. Also if there is an apply() outstanding and we perform another commit(),
+	The commit() will be blocked until the apply() is not completed.
+
 
 
 	
