@@ -49,7 +49,7 @@
     A class that directly extends Service runs on the main thread so it will block the UI (if there is one) 
     and should therefore either be used only for short tasks or should make use of other threads for longer tasks.
 
-	IntentService is a subclass of Service that handles asynchronous requests (expressed as Intents) on demand. 
+    IntentService is a subclass of Service that handles asynchronous requests (expressed as Intents) on demand. 
     Clients send requests through startService(Intent) calls. 
     The service is started as needed, handles each Intent in turn using a worker thread, and stops itself when it runs out of work. Read More on Mindorks's blog
     
@@ -141,6 +141,78 @@
 	A background service performs an operation that isn’t directly noticed by the user. In Android API level 26 and above, there are restrictions to using background services and it is recommended to use WorkManager in these cases.
 
 	Bound Service: A service is bound when an application component binds to it by calling bindService(). A bound service offers a client-server interface that allows components to interact with the service, send requests, receive results. A bound service runs only as long as another application component is bound to it.
+	
+**14. What are the major differences between ListView and RecyclerView  ?**	
+
+	1. ViewHolder Pattern: 
+	Recyclerview implements the ViewHolders pattern whereas it is not mandatory in a ListView. 
+	A ViewHolder object stores each of the component views inside the tag field of the Layout, 
+	so you can immediately access them without the need to look them up repeatedly. 
+	In ListView, the code might call findViewById() frequently during the scrolling of ListView, which can slow down performance. 
+	Even when the Adapter returns an inflated view for recycling, you still need to look up the elements and update them. 
+	A way around repeated use of findViewById() is to use the "view holder" design pattern.
+
+	2. LayoutManager: 
+	In a ListView, the only type of view available is the vertical ListView. 
+	A RecyclerView decouples list from its container so we can put list items easily at run time 
+	in the different containers (linearLayout, gridLayout) by setting LayoutManager.
+
+	3. Item Animator: 
+	ListViews are lacking in support of good animations, but the RecyclerView brings a whole new dimension to it.
+	
+**15. What is the difference between margin and padding  ?**	
+
+	Padding will be space added inside the container, for instance, if it is a button, padding will be added inside the button.
+
+	Margin will be space added outside the container.
+	
+**16. What is sw keyword in layout-sw600 folder meaning ?**
+
+	The sw keywrod which stands on "smallest width" is an screen size qualifier that allow you to provide alternative 
+	layouts for screens that have a minimum width measured in dp. The smallest width qualifier specifies the smallest 
+	of the screen's two sides, regardless of the device's current orientation, so it's a simple way to specify the overall screen size available for your layout.    	 Here is some useful values:
+
+	320dp: a typical phone screen (240x320 ldpi, 320x480 mdpi, 480x800 hdpi, etc).
+	480dp: a large phone screen ~5" (480x800 mdpi).
+	600dp: a 7” tablet (600x1024 mdpi).
+	720dp: a 10” tablet (720x1280 mdpi, 800x1280 mdpi, etc).
+	
+**17. How to pass items to fragment ?**
+	
+	Using Bundle you can pass items to the fragment.
+	
+**18. How would you communicate between two fragments ?**
+
+	There are several ways to communicate two fragments. Using interfaces are a common way to do that. 
+	You can connect two fragments through interfaces that are implemented in the parent activity.
+	
+**19. Difference between adding/replacing fragment in backstack ?**
+
+	replace removes the existing fragment and adds a new fragment. 
+	This means when you press back button the fragment that got replaced will be created with its onCreateView being invoked.
+
+	add retains the existing fragments and adds a new fragment that means existing fragment will be active and they wont be 
+	in 'paused' state hence when a back button is pressed onCreateView is not called for the existing 
+	fragment(the fragment which was there before new fragment was added).
+
+	In terms of fragment’s life cycle events onPause(), onResume(), onCreateView() and other life cycle events will be 
+	invoked in case of replace but they wont be invoked in case of add.
+	
+**20. What is the difference between dialog and dialogFragment ?**
+
+
+	THe dialog is a small window that prompts the user to make a decision or enter additional information. 
+	Instead, dialogFragment is a fragment that displays a dialog windows and contains a dialog object.
+
+	DialogFragment does various things to keep the fragment's lifecycle driving it, instead of the Dialog. 
+	Dialogs are generally autonomous entities -- they are their own window, receiving their own input events, 
+	and often deciding on their own when to disappear. DialogFragment needs to ensure that what is happening 
+	with the Fragment and Dialog states remains consistent. To do this, it watches for dismiss events from 
+	the dialog and takes care of removing its own state when they happen.
+
+
+	
+
 
 	
 	
