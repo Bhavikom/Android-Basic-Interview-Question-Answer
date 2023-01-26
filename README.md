@@ -727,6 +727,32 @@
 	the ViewModel through their containing Activity. The Fragments can update data within the ViewModel and if the data is exposed using 
 	LiveData the new state will be pushed to the other fragment as long as it is observing the LiveData from the ViewModel.
 	
+**58 Why do we need to call setContentView() in onCreate() of Activity class ?**
+
+	As onCreate() of an Activity is called only once, this is the point where most initialization should go: 
+	calling setContentView(int) to inflate the activity's UI, using findViewById to programmatically interact with widgets in the UI, 
+	calling managedQuery(android.net.Uri, String[], String, String[], String) to retrieve cursors for data being displayed, etc.
+
+	It is inefficient to set the content in onResume() or onStart() (which are called multiple times) as the setContentView() is a heavy operation.
+	
+**59. What is the purpose of addToBackStack() while commiting fragment transaction ?**
+
+	By calling addToBackStack(), the replace transaction is saved to the back stack so the user can reverse the transaction 
+	and bring back the previous fragment by pressing the Back button.
+	
+**60. What are ViewGroups and how they are different from the Views ?**
+
+	View: View objects are the basic building blocks of User Interface(UI) elements in Android. View is a simple rectangle box which 
+	responds to the user’s actions. Examples are EditText, Button, CheckBox etc. View refers to the android.view.View class, 
+	which is the base class of all UI classes.
+	
+	ViewGroup: ViewGroup is the invisible container. It holds View and ViewGroup. For example, LinearLayout is the 
+	ViewGroup that contains Button(View), and other Layouts also. ViewGroup is the base class for Layouts
+	
+**61. What is a SpannableString?
+
+	A SpannableString has immutable text, but its span information is mutable. Use a SpannableString when your text doesn't need to be 
+	changed but the styling does. Spans are ranges over the text that include styling information like color, heighliting, italics, links, etc
  
 
 	
