@@ -69,6 +69,17 @@
 	Declaring the Android API which will be used by the application
 	Holding the library file details linked to the application
 	
+**9. What are the different data types supported by AIDL ?**
+
+	AIDL or Android Interface Definition Language facilitates the communication between the client and service.
+	Data Types supported by AIDL are as follows:
+
+	String
+	List
+	Map
+	charSequence
+	INT, Long, Char, Boolean (Java data types)
+	
 **3. What is Application class ?** 
 
     The Application class in Android is the base class within an Android app that contains all other components such as activities and services.    
