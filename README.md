@@ -568,6 +568,25 @@
 
 	.apk file contains .dex file in zip format which can be run on Dalvik VMs
 	
+**44. What is the main difference between View Binding and Data Binding ?**
+
+	-> With ViewBinding, the layouts do not need a layout tag.
+	-> ViewBinding is simply to bind your UI components to your code. While Data Binding is used to Bind your UI components to your Data Source.
+	-> ViewBinding is faster than Data Binding because there is no usage of an annotation processor to generate Binding classes.
+	-> ViewBinding does not support two-way binding.
+	
+**45. Explain when would you call getApplicationContext() and why ?**
+
+	Use getApplicationContext() if you need something tied to a Context that itself will have global scope.
+	I use getApplicationContext(), for example, in WakefulIntentService, for the static WakeLock to be used for the service. 
+	Since that WakeLock is static, and I need a Context to get at PowerManager to create it, it is safest to use getApplicationContext().
+	
+	Use getApplicationContext() when you bind to a Service from an Activity, if you wish to pass the ServiceConnection 
+	(i.e., the handle to the binding) between Activity instances via onRetainNonConfigurationInstance(). 
+	Android internally tracks bindings via these ServiceConnections and holds references to the Contexts that create the bindings.
+	If you bind from the Activity, then the new Activity instance will have a reference to the ServiceConnection which has an implicit 
+	reference to the old Activity, and the old Activity cannot be garbage collected.
+	
 	
 
 	
