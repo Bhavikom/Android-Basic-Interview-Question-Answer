@@ -587,7 +587,41 @@
 	If you bind from the Activity, then the new Activity instance will have a reference to the ServiceConnection which has an implicit 
 	reference to the old Activity, and the old Activity cannot be garbage collected.
 	
+**46. What is Intent,PendingIntent and StickyIntent ?**
+
+	1.Intent: Intent is a message passing mechanism between components of android, except for Content Provider. 
+	You can use intent to start any component.
 	
+	2.PendingIntent : 
+	A PendingIntent is a token that you give to a foreign application (e.g. NotificationManager, AlarmManager, Home Screen 
+	AppWidgetManager or other 3rd party applications), which allows the foreign application to use your application’s permissions 
+	to execute a predefined piece of code.
+	If you want a foreign application to perform any Intent operation at future point of time, then we will use PendingIntent.
+	Example: If you building a SMS app and you want to open your application when new message notification come. 
+	In that situation you have to use PendingIntent.
+	
+	3.Sticky Intent:
+	Sticks with android, for future broadcast listeners. For example if BATTERY_LOW event occurs then that intent will be stick 
+	with android so that if any future user requested for BATTER_LOW, it will be fired.
+	An intent that is used with sticky broadcast, is called as sticky intent. This intent will stick with android system for future broadcast receiver requests.
+	
+**47. What is Intent Filter ?**
+
+	An intent filter is an expression in an app's manifest file that specifies the type of intents that the component would like to receive.
+
+	When you create an implicit intent, the Android system finds the appropriate component to start by comparing the contents of the intent 
+	to the intent filters declared in the manifest file of other apps on the device. If the intent matches an intent filter, 
+	the system starts that component and delivers it the Intent object.
+
+	<activity android:name=".HelloWorld" android:label="@string/app_name">
+    		<intent-filter>
+        	<action android:name="android.intent.action.VIEW"/>
+        	<category android:name="android.intent.category.DEFAULT"/>
+        	<category android:name="android.intent.category.BROWSABLE"/>
+        	<data android:scheme="http" android:host="androidium.org"/>
+    		</intent-filter>
+	</activity>
+		
 
 	
 
