@@ -622,7 +622,33 @@
     		</intent-filter>
 	</activity>
 	
-**48. 
+**48. What is AIDL file ?**
+
+	The Android Interface Definition Language (AIDL) allows you to define the programming interface that both the client 
+	and service agree upon in order to communicate with each other using interprocess communication (IPC).
+
+	On Android, one process cannot normally access the memory of another process. So to talk, they need to decompose 
+	their objects into primitives that the operating system can understand, and marshall the objects across that boundary for you. 
+	The code to do that marshalling is tedious to write, so Android handles it for you with AIDL.
+	
+**49. What is Doze? What about App Standby ?**
+
+	Starting from Android 6.0 (API level 23), Android introduces two power-saving features that extend battery life for users by 
+	managing how apps behave when a device is not connected to a power source.
+
+	Doze reduces battery consumption by deferring background CPU and network activity for apps when the device is unused for long periods of time. 
+	In Doze mode, the system attempts to conserve battery by restricting apps' access to network and CPU-intensive services. 
+	It also prevents apps from accessing the network and defers their jobs, syncs, and standard alarms.
+
+	Periodically, the system exits Doze for a brief time to let apps complete their deferred activities. 
+	During this maintenance window, the system runs all pending syncs, jobs, and alarms, and lets apps access the network.
+
+	App Standby defers background network activity for apps with which the user has not recently interacted. 
+	App Standby allows the system to determine that an app is idle when the user is not actively using it. 
+	The system makes this determination when the user does not touch the app for a certain period of time. 
+	When the user plugs the device into a power supply, the system releases apps from the standby state, allowing them to freely 
+	access the network and to execute any pending jobs and syncs. If the device is idle for long periods of time, the system 
+	allows idle apps network access around once a day.
 		
 
 	
