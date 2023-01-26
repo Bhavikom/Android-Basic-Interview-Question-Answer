@@ -435,6 +435,76 @@
 	3.Broadcast receivers
 	4.Content providers
 	
+**27. Android Activity Lifecycle methods ?**	
+
+	onCreate  called when activity is first created.
+	onStart	  called when activity is becoming visible to the user.
+	onResume  called when activity will start interacting with the user.
+	onPause	  called when activity is not visible to the user.
+	onStop	  called when activity is no longer visible to the user.
+	onRestart called after your activity is stopped, prior to start.
+	onDestroy called before the activity is destroyed.
+	
+**28. What is the difference between onCreate() and onStart() ?**
+
+	onCreate() method gets called when activity gets created, and its called only once in whole Activity life cycle. 
+	where as onStart() is called when activity is stopped... I mean it has gone to background and its onStop() method is called by the os. 
+	onStart() may be called multiple times in Activity life cycle
+	
+**29. When only onDestroy is called for an activity without onPause() and onStop() ?**
+
+	if you call finish() while creating the Activity in onCreate(), the system will invoke onDestroy() directly.
+	
+**30. What is onSavedInstanceState() and onRestoreInstanceState() in activity ?**
+
+	1.onSavedInstanceState() - This method is used to store data before pausing the activity.
+	2.onRestoreInstanceState() - This method is used to recover the saved state of an activity when the activity is recreated after destruction. 
+	So, the onRestoreInstanceState() receive the bundle that contains the instance state information.
+	
+**31. Fragment Lifecycler ?**
+
+	onAttach() = 
+	The very first method to be called when the fragment has been 	associated with the activity. 
+	This method executes only once during the lifetime of a fragment.  
+	
+	onCreate() = 
+	This method initializes the fragment by adding all the required attributes and components.
+	
+	onCreateView()	= 
+	System calls this method to create the user interface of the fragment. The root of the fragment’s layout is returned as the View 
+	component by this method to draw the UI.
+	
+	onActivityCreated() = 
+	It indicates that the activity has been created in which the fragment exists. 
+	View hierarchy of the fragment also instantiated before this function call. 
+	
+	onStart()	= The system invokes this method to make the fragment visible on the user’s device.
+	onResume()	= This method is called to make the visible fragment interactive.
+	onPause()	= It indicates that the user is leaving the fragment. System call this method to commit the changes made to the fragment. 
+	onStop()	= Method to terminate the functioning and visibility of fragment from the user’s screen. 
+	onDestroyView()	= System calls this method to clean up all kinds of resources as well as view hierarchy associated with the fragment.
+	onDestroy()	= It is called to perform the final clean up of fragment’s state and its lifecycle.
+	onDetach()	= The system executes this method to disassociate the fragment from its host activity.
+	
+**32. what is ViewBinding ?**
+
+	ViewBinding is a feature in an android that allows you to access all of the UI components directly via generated Binding classes. 
+	Once you enable the view binding in a build.gradle file, it generates Binding classes which contain all UI components references.
+
+	If your layout file name is like game_score.xml then it will generate its class with the name like GameScoreBinding.
+
+	Advantages of View Binding:
+	Null safety:
+	Because View Binding directly creates a reference to views, there is not any risk of a null pointer exception.
+	Type safety:
+	The Generated binding class has the same class types fields as present in the XML file, so there are no risks for class cast exceptions.
+	
+**33. What is data binding in Android ?**
+
+	Data binding is the process of integrating views in an XML layout with data objects. The Data Binding Library 
+	is responsible for generating the classes required for this procedure.
+	
+
 	
 
 
