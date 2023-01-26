@@ -19,6 +19,56 @@
 
 	The final step involves the android apkbuilder which takes all the input and builds the apk (android packaging key) file.
 
+**3. Android Debug Bridge (ADB ?**
+	The ADB is a command-line debugging application doled out with the SDK. It enables developers to communicate with the device,
+	and facilitates actions such as the installation and debugging of an application.
+	
+**4. Android Asset Packaging Tool (AAPT) ?**
+	
+	The AAPT builds the ‘.apk’ distributable Android package file.
+	
+**5. What is Android Runtime ?**
+
+	Android Runtime (ART) is an application used by the Android OS as a runtime environment. 
+	It has now replaced Dalvik, a discontinued Virtual Machine (VM). ART translates the bytecode of the application into native instructions,
+	which are carried out by the device’s runtime environment
+	
+**6. What are Sensors in Android ?**
+	
+	Android-based devices have an assortment of built-in sensors in them, which measure certain parameters such as motion, orientation, and more. 
+	These sensors help to monitor the positioning and movement of the device with high accuracy. They can be both software and hardware-based on nature.
+	The three prominent categories of sensors in Android devices are:
+	
+	1.Position Sensor: 
+	It is used to measure the physical position of the Android device. This includes orientation sensors and magnetometers
+	
+	2.Motion Sensors: These sensors include gravity, rotational activity, and acceleration sensors which measure the rotation 
+	of the device or the acceleration and 	much more.
+	
+	3.Environmental Sensor: It includes sensors that measure temperature, pressure, humidity, and other environmental factors
+	
+**7. xplain DDMS in brief ?**
+
+	The Dalvik Debug Monitor Server (DDMS) is a debugging tool in Android Studio. It has a wide range of debugging features, such as:
+
+	Port forwarding
+	Location data spoofing
+	Screen capture
+	Logcat
+	Radio state information
+	Thread and Heap information
+	The DDMS tool is now deprecated and Android now suggests the users use Android Profiler instead.
+	
+**8. What is the AndroidManifest.xml file and why do you need this ?**
+
+	The AndroidManifest.xml file contains information about the application, which is then provided to the Android system. 
+	This data may include the package name, components such as activity, services, content providers, and more. This file executes the following tasks:
+
+	Providing a unique name to the Java package
+	Describing various components of the application, such as activity, services, and more. It also defines the classes which will implement these components.
+	Declaring the Android API which will be used by the application
+	Holding the library file details linked to the application
+	
 **3. What is Application class ?** 
 
     The Application class in Android is the base class within an Android app that contains all other components such as activities and services.    
@@ -604,6 +654,15 @@
 	Sticks with android, for future broadcast listeners. For example if BATTERY_LOW event occurs then that intent will be stick 
 	with android so that if any future user requested for BATTER_LOW, it will be fired.
 	An intent that is used with sticky broadcast, is called as sticky intent. This intent will stick with android system for future broadcast receiver requests.
+
+**47 Explain the difference between implicit and explicit intent ?**
+
+	Below is the difference between the two intents
+
+	Explicit Intent: An explicit intent is where you inform the system about which activity or system component 
+	it should use to generate a response to this intent.
+	Implicit Intent: An implicit intent allows you to declare the action you wish to carry out, after which the 
+	Android system will check which components are registered to handle that specific action.
 	
 **47. What is Intent Filter ?**
 
