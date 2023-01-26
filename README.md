@@ -1,11 +1,38 @@
 # Android-General-Interview-Question-Answer
 
-**1. What is Application class ?** 
+**1: What is the architecture of Android ?**
+
+	Android architecture features five main components:
+	
+	Applications
+	Android Framework
+	Android Runtime
+	Platform Libraries
+	Linux Kernel
+**2. How Android apps compiled and run ?**
+
+	First step involves compiling the resources folder (/res) using the aapt (android asset packaging tool) tool. 
+	These are compiled to a single class file called R.java. This is a class that just contains constants.
+
+	Second step involves the java source code being compiled to .class files by javac, and then the class files are 
+	converted to Dalvik bytecode by the “dx” tool, which is included in the sdk ‘tools’. The output is classes.dex.
+
+	The final step involves the android apkbuilder which takes all the input and builds the apk (android packaging key) file.
+
+**3. What is Application class ?** 
 
     The Application class in Android is the base class within an Android app that contains all other components such as activities and services.    
     The Application class, or any subclass of the Application class, is instantiated before any other class when the process for your application/package is created.
     
-**2. Difference between Activity and Service ?**
+**4. Tell all the Android application components ?**
+
+	There are four different types of app components:
+	1.Activities
+	2.Services
+	3.Broadcast receivers
+	4.Content providers
+    
+**5. Difference between Activity and Service ?**
 
     Activity: An activity is the entry point for interacting with the user. It represents a single screen with a user interface.
 
@@ -13,17 +40,17 @@
     It is a component that runs in the background to perform long-running operations or to perform work for remote processes. 
     A service does not provide a user interface.
   
- **3. How does the activity respond when orientation is changed ?** 
+ **6. How does the activity respond when orientation is changed ?** 
  
     According to the documentation, Some device configurations can change during runtime (such as screen orientation, keyboard availability, and when the user enables       multi-window mode). When such a change occurs, Android restarts the running Activity ( onDestroy() is called, followed by onCreate()). The restart behavior is           designed to help your application adapt to new configurations by automatically reloading your application with alternative resources that match the new device           configuration. 	
     
     
- **4. How to know configChange happens in onDestroy() function ?**
+ **7. How to know configChange happens in onDestroy() function ?**
  
     Once an activity is in the process of finishing then isFinishing() method is returned true value, otherwise false when 
     the system is temporarily destroying the instance of the activity.
     
- **5. How to prevent the data from reloading when orientation is changed ?** 
+ **8. How to prevent the data from reloading when orientation is changed ?** 
  
     The most basic approach would be to use a combination of ViewModels and onSaveInstanceState(). A ViewModel is LifeCycle-Aware. 
     In other words, a ViewModel will not     be destroyed if its owner is destroyed for a configuration change (e.g. rotation). 
@@ -33,7 +60,7 @@
     So the common practice is to store data in the ViewModel class (since it persists data during configuration changes) 
     and use OnSaveInstanceState() to store small amounts of UI data.
     
- **6. How to handle multiple screen sizes ?** 
+ **9. How to handle multiple screen sizes ?** 
  
     It's a long debate but in a very nutshell, you can do it in these ways:
 
@@ -43,7 +70,7 @@
 	Be aware of the screen orientation change approach in your application.
     If you don't want to handle it enforce to use just one orientation (portrait or landscape) through declaring it in the manifest file.
     
- **7. Difference between Service and IntentService ?**   
+ **10. Difference between Service and IntentService ?**   
  
     Service is the base class for Android services that can be extended to create any service. 
     A class that directly extends Service runs on the main thread so it will block the UI (if there is one) 
@@ -53,7 +80,7 @@
     Clients send requests through startService(Intent) calls. 
     The service is started as needed, handles each Intent in turn using a worker thread, and stops itself when it runs out of work. Read More on Mindorks's blog
     
- **8. What is Fragment ?** 
+ **11. What is Fragment ?** 
  
     A Fragment is a piece of an activity which enable more modular activity design. A fragment has its layout, its behavior, 
     and its life cycle callbacks. You can add or remove fragments in an activity while the activity is running. 
@@ -61,12 +88,12 @@
     The fragment life cycle is closely related to its host activity which means when the activity is paused, 
     all the fragments available in the activity will also be stopped.
   
- **9. Which method in fragment runs only once ?** 
+ **12. Which method in fragment runs only once ?** 
  
  	According to the documentation, the onCreate() method is called once a fragment is created. Within your implementation, 
 	you should initialize essential components of the fragment that you want to retain when the fragment is paused or stopped, then resumed.
 	
- **10. What is the difference between Thread and AsyncTask ?** 
+ **13. What is the difference between Thread and AsyncTask ?** 
  
  	** AsyncTask
 	
@@ -123,13 +150,13 @@
 	If someone wants to execute multiple messages(Runnables) then he should use the Looper class which is responsible for creating a queue in the thread. 
 	For example, while writing an application that downloads files from the internet, we can use Looper class to put files to be downloaded in the queue.
 	
-**12. What are Handlers ?** 	
+**14. What are Handlers ?** 	
 
 	Handlers are objects for managing threads. It receives messages and writes code on how to handle the message.
 	They run outside of the activity’s lifecycle, so they need to be cleaned up properly or else you will have thread leaks.
 	Handlers allow communicating between the background thread and the main thread.
 	
-**13. Describe different types of Services in Android  ?**
+**15. Describe different types of Services in Android  ?**
 
 	A Service is an application component that can perform long-running operations in the background, and it doesn't provide a user interface. 
 	It can run in the background, even when the user is not interacting with your application. These are the three different types of services:
@@ -142,7 +169,7 @@
 
 	Bound Service: A service is bound when an application component binds to it by calling bindService(). A bound service offers a client-server interface that allows components to interact with the service, send requests, receive results. A bound service runs only as long as another application component is bound to it.
 	
-**14. What are the major differences between ListView and RecyclerView  ?**	
+**16. What are the major differences between ListView and RecyclerView  ?**	
 
 	1. ViewHolder Pattern: 
 	Recyclerview implements the ViewHolders pattern whereas it is not mandatory in a ListView. 
@@ -160,13 +187,13 @@
 	3. Item Animator: 
 	ListViews are lacking in support of good animations, but the RecyclerView brings a whole new dimension to it.
 	
-**15. What is the difference between margin and padding  ?**	
+**17. What is the difference between margin and padding  ?**	
 
 	Padding will be space added inside the container, for instance, if it is a button, padding will be added inside the button.
 
 	Margin will be space added outside the container.
 	
-**16. What is sw keyword in layout-sw600 folder meaning ?**
+**18. What is sw keyword in layout-sw600 folder meaning ?**
 
 	The sw keywrod which stands on "smallest width" is an screen size qualifier that allow you to provide alternative 
 	layouts for screens that have a minimum width measured in dp. The smallest width qualifier specifies the smallest 
@@ -177,16 +204,16 @@
 	600dp: a 7” tablet (600x1024 mdpi).
 	720dp: a 10” tablet (720x1280 mdpi, 800x1280 mdpi, etc).
 	
-**17. How to pass items to fragment ?**
+**19. How to pass items to fragment ?**
 	
 	Using Bundle you can pass items to the fragment.
 	
-**18. How would you communicate between two fragments ?**
+**20. How would you communicate between two fragments ?**
 
 	There are several ways to communicate two fragments. Using interfaces are a common way to do that. 
 	You can connect two fragments through interfaces that are implemented in the parent activity.
 	
-**19. Difference between adding/replacing fragment in backstack ?**
+**21. Difference between adding/replacing fragment in backstack ?**
 
 	replace removes the existing fragment and adds a new fragment. 
 	This means when you press back button the fragment that got replaced will be created with its onCreateView being invoked.
@@ -198,7 +225,7 @@
 	In terms of fragment’s life cycle events onPause(), onResume(), onCreateView() and other life cycle events will be 
 	invoked in case of replace but they wont be invoked in case of add.
 	
-**20. What is the difference between dialog and dialogFragment ?**
+**22. What is the difference between dialog and dialogFragment ?**
 
 
 	THe dialog is a small window that prompts the user to make a decision or enter additional information. 
@@ -210,7 +237,7 @@
 	with the Fragment and Dialog states remains consistent. To do this, it watches for dismiss events from 
 	the dialog and takes care of removing its own state when they happen.
 	
-**21. What is the difference between Foreground and Background and Bounded service ?**
+**23. What is the difference between Foreground and Background and Bounded service ?**
 
 	Foreground Service: A foreground service performs some operation that is noticeable to the user. 
 	For example, we can use a foreground service to play an audio track. A Notification must be displayed to the user.
@@ -222,29 +249,19 @@
 	A bound service offers a client-server interface that allows components to interact with the service, send requests, receive results. 
 	A bound service runs only as long as another application component is bound to it.
 	
-**21. What is contentProvider and what is typically used for ?**
+**24. What is contentProvider and what is typically used for ?**
 
 	A ContentProvider provides data from one application to another, when requested. It manages access to a structured set of data. 
 	It provides mechanisms for defining data security. Learn more. For further reading see the official android documentation
 	
-**22. What is the difference between apply() and commit() in sharedPreferences ?**
+**25. What is the difference between apply() and commit() in sharedPreferences ?**
 
 	commit() writes the data synchronously and returns a boolean value of success or failure depending on the result immediately.
 
 	apply() is asynchronous and it won’t return any boolean response. Also if there is an apply() outstanding and we perform another commit(),
 	The commit() will be blocked until the apply() is not completed.
 	
-**23. How Android apps compiled and run ?**
-
-	First step involves compiling the resources folder (/res) using the aapt (android asset packaging tool) tool. 
-	These are compiled to a single class file called R.java. This is a class that just contains constants.
-
-	Second step involves the java source code being compiled to .class files by javac, and then the class files are 
-	converted to Dalvik bytecode by the “dx” tool, which is included in the sdk ‘tools’. The output is classes.dex.
-
-	The final step involves the android apkbuilder which takes all the input and builds the apk (android packaging key) file.
-	
-**24. What Is the Singleton Pattern ?**
+**26. What Is the Singleton Pattern ?**
 
 	The Singleton Pattern is a software design pattern that guarantees a class has one instance only and a global point of 
 	access to it is provided by that class. Anytime multiple classes or clients request for that class, they get the same instance of the class. 
@@ -271,7 +288,7 @@
  	// other instance methods can follow 
 }
 
-**25. What Is serializable and parcelable and find difference ?**
+**27. What Is serializable and parcelable and find difference ?**
 
 	While developing android applications, we often used to transfer the data from one activity to another. 
 	When we have data like boolean values, int values, String values we can pass these data very easily through intent. For example:-
@@ -380,7 +397,7 @@
 	3.Serializable creates lots of temporary objects in comparison to Parcelable.
 	4.Serializable is not reflection safe whereas Parcelable is reflection safe.
 
-**26. Describe different Activity Launch Mode ?**
+**28. Describe different Activity Launch Mode ?**
 
 	There are four types of launch modes:
 	Standard
@@ -402,7 +419,7 @@
 	4. Single instance
 	For an activity that has a single instance launch mode, a new task is created.
 
-**27. What is Context in Android ?**
+**29. What is Context in Android ?**
 
 	-The Context in Android is actually the context of what we are talking about and where we are currently present. 
 	This will become more clear as we go along with this.
@@ -426,16 +443,8 @@
 	-Application Context: It is the application and we are present in Application. For example - MyApplication(which extends Application class). 
 	It is an instance of MyApplication only.
 	-Activity Context: It is the activity and we are present in Activity. For example - MainActivity. It is an instance of MainActivity only.
-	
-**27. Tell all the Android application components ?**
-
-	There are four different types of app components:
-	1.Activities
-	2.Services
-	3.Broadcast receivers
-	4.Content providers
-	
-**27. Android Activity Lifecycle methods ?**	
+		
+**30. Android Activity Lifecycle methods ?**	
 
 	onCreate  called when activity is first created.
 	onStart	  called when activity is becoming visible to the user.
@@ -445,23 +454,23 @@
 	onRestart called after your activity is stopped, prior to start.
 	onDestroy called before the activity is destroyed.
 	
-**28. What is the difference between onCreate() and onStart() ?**
+**31. What is the difference between onCreate() and onStart() ?**
 
 	onCreate() method gets called when activity gets created, and its called only once in whole Activity life cycle. 
 	where as onStart() is called when activity is stopped... I mean it has gone to background and its onStop() method is called by the os. 
 	onStart() may be called multiple times in Activity life cycle
 	
-**29. When only onDestroy is called for an activity without onPause() and onStop() ?**
+**32. When only onDestroy is called for an activity without onPause() and onStop() ?**
 
 	if you call finish() while creating the Activity in onCreate(), the system will invoke onDestroy() directly.
 	
-**30. What is onSavedInstanceState() and onRestoreInstanceState() in activity ?**
+**33. What is onSavedInstanceState() and onRestoreInstanceState() in activity ?**
 
 	1.onSavedInstanceState() - This method is used to store data before pausing the activity.
 	2.onRestoreInstanceState() - This method is used to recover the saved state of an activity when the activity is recreated after destruction. 
 	So, the onRestoreInstanceState() receive the bundle that contains the instance state information.
 	
-**31. Fragment Lifecycler ?**
+**34. Fragment Lifecycler ?**
 
 	onAttach() = 
 	The very first method to be called when the fragment has been 	associated with the activity. 
@@ -486,7 +495,7 @@
 	onDestroy()	= It is called to perform the final clean up of fragment’s state and its lifecycle.
 	onDetach()	= The system executes this method to disassociate the fragment from its host activity.
 	
-**32. what is ViewBinding ?**
+**35. what is ViewBinding ?**
 
 	ViewBinding is a feature in an android that allows you to access all of the UI components directly via generated Binding classes. 
 	Once you enable the view binding in a build.gradle file, it generates Binding classes which contain all UI components references.
@@ -499,10 +508,66 @@
 	Type safety:
 	The Generated binding class has the same class types fields as present in the XML file, so there are no risks for class cast exceptions.
 	
-**33. What is data binding in Android ?**
+**36. What is data binding in Android ?**
 
 	Data binding is the process of integrating views in an XML layout with data objects. The Data Binding Library 
 	is responsible for generating the classes required for this procedure.
+	
+**37: How do you protect an Android app from reverse engineering?
+	
+	Make sure you are well aware of prevention tactics and tools such as tamper detection, ProGuard Assistance, and SafetyNet. 
+	List other best practices such as using C++ for important code, securing user credentials, server-side database encryption, 
+	and altering Android's shared library loading process.
+	
+**40. What is the difference between getContext(), getApplicationContext(), getBaseContext(), and this ?**
+
+	View.getContext(): Returns the context the view is currently running in. Usually the currently active Activity.
+
+	Activity.getApplicationContext(): Returns the context for the entire application (the process all the Activities are running inside of). 
+	Use this instead of the current Activity context if you need a context tied to the lifecycle of the entire application, 
+	not just the current Activity.
+
+	ContextWrapper.getBaseContext(): If you need access to a Context from within another context, you use a ContextWrapper. 
+	The Context referred to from inside that ContextWrapper is accessed via getBaseContext().
+
+	this is refer current class object always. this and getContext()are not always same e.g. in Activity class, 
+	you can use this because Activity inherits from Context but method getContext() is not in Activity class.
+	
+**41. What is the difference between compileSdkVersion and targetSdkVersion ?**
+
+	The compileSdkVersion is the version of the API the app is compiled against. This means you can use Android API features 
+	included in that version of the API (as well as all previous versions, obviously). If you try and use API 16 features 
+	but set compileSdkVersion to 15, you will get a compilation error. If you set compileSdkVersion to 16 you can still run 
+	the app on a API 15 device as long as your app's execution paths do not attempt to invoke any APIs specific to API 16.
+
+	The targetSdkVersion has nothing to do with how your app is compiled or what APIs you can utilize. The targetSdkVersion is 
+	supposed to indicate that you have tested your app on (presumably up to and including) the version you specify. 
+	This is more like a certification or sign off you are giving the Android OS as a hint to how it should handle your app in terms of OS features.
+	
+**42. What are the permission protection levels in Android ?**
+
+	Normal — A lower-risk permission that gives requesting applications access to isolated application-level features, 
+	with minimal risk to other applications, the system, or the user. The system automatically grants this type of 
+	permission to a requesting application at installation, without asking for the user’s explicit approval.
+	
+	Dangerous — A higher-risk permission. Any dangerous permissions requested by an application may be displayed to the 
+	user and require confirmation before proceeding, or some other approach may be taken to avoid the user automatically 
+	allowing the use of such facilities.
+	
+	Signature — A permission that the system grants only if the requesting application is signed with the same certificate 
+	as the application that declared the permission. If the certificates match, the system automatically grants the permission 
+	without notifying the user or asking for the user’s explicit approval.
+	
+	SignatureOrSystem — A permission that the system grants only to applications that are in the Android system image or that 
+	are signed with the same certificate as the application that declared the permission.
+	
+**43. What are dex files are used for ?**
+
+	A .java file is given to the java compiler (javac) to generate the .class file. All .class files are given to dx tool to generate a single dex file. 
+	The dex file is given to the Dalvik VM to generate the final machine code. The final machine code is given to the CPU to execute.
+
+	.apk file contains .dex file in zip format which can be run on Dalvik VMs
+	
 	
 
 	
