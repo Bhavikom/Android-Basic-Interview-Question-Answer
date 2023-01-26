@@ -271,6 +271,115 @@
  	// other instance methods can follow 
 }
 
+**25. What Is serializable and parcelable and find difference ?**
+
+	While developing android applications, we often used to transfer the data from one activity to another. 
+	When we have data like boolean values, int values, String values we can pass these data very easily through intent. For example:-
+
+	intent.putExtra("INT_KEY", 100); // we can pass like this
+	getIntent().getBundleExtra("INT_KEY"); // we can get Values from Intent like this
+	
+	But In some cases, we have to pass complex POJO class objects (e.x. Student, Employee, Vehicle etc.) to another activity. 
+	In this scenario, we have to do some extra stuff with the POJO class that makes object to be easily transferrable from one activity to another.
+
+	We can achieve this by using two concepts which are Serializable and Parcelable.
+	
+	1. Serializable : 
+	
+	Serializable is a standard Java interface which belongs to java.io.Serializable. It is not part of the Android SDK. Here is an example:-
+	
+	public class Employee implements Serializable {
+
+		private String name;
+		private int age;
+		public String address;
+
+		public Employee(String name, int age, String address)   {
+			super();
+			this.name = name;
+			this.age = age;
+			this.address = address;
+		}
+		public String getName() {
+			return name;
+		}
+		public int getAge() {
+			return age;
+		}
+		public String getAddress() {
+			return address;
+		}
+
+		//we can pass data like this from activity
+		Employee employee = new Employee("ABC", 23, "XYZ 03");
+		mIntent.putExtra("EMPLOYEE_KEY", employee);
+		//we can get data like this in other activity
+		getIntent().getSerializableExtra("EMPLOYEE_KEY");
+	}
+	
+	2. Parcelable : 
+	
+	Parcelable is also an interface that belongs to android.os.Parcelable. It is part of the Android SDK. 
+	It converts the object into a byte stream and passes the data between activities. To implement this with POJO class 
+	we have to override some methods and write Creators method. Here is an example:-
+	
+	public class Employee implements Parcelable {
+    		private int age;
+    		private String name;
+    		private String address;
+    		public Employee(String name, int age, String address) {
+        		this.name = name;
+        		this.age = age;
+        		this.address = address;
+    		}
+    		public Employee(Parcel source) {
+        		age = source.readInt();
+        		name = source.readString();
+        		address = source.readString();
+    		}
+    		@Override
+    		public int describeContents() {
+        		return 0;
+   		}
+    		@Override
+    		public void writeToParcel(Parcel dest, int flags) {
+        		dest.writeInt(age);
+        		dest.writeString(name);
+        		dest.writeString(address);
+    		}
+    		public int getAge() {
+        		return age;
+    		}
+   		public String getName() {
+        		return name;
+    		}
+    		public String getAddress() {
+            		return address;
+    		}
+   	 	public static final Creator<Employee> CREATOR = new Creator<Employee>() {
+        		@Override
+        		public Employee[] newArray(int size) {
+            			return new Employee[size];
+        		}
+        		@Override
+        		public Employee createFromParcel(Parcel source) {
+            			return new Employee(source);
+        		}
+    		};
+	}
+	//we can pass data like this from activity
+	Employee employee = new Employee("ABC", 23, "XYZ 03");
+	mIntent.putExtra("EMPLOYEE_KEY", employee);
+	//we can get data like this in other activity
+	getIntent().getParcelableExtra("EMPLOYEE_KEY");
+	
+	**Difference between Serializable and Parcelable
+
+	1.Serializable is a slow process whereas Parcelable is fast.
+	2.Parcelable interface takes more time to implement in comparison to Serializable.
+	3.Serializable creates lots of temporary objects in comparison to Parcelable.
+	4.Serializable is not reflection safe whereas Parcelable is reflection safe.
+
 
 
 	
