@@ -380,8 +380,61 @@
 	3.Serializable creates lots of temporary objects in comparison to Parcelable.
 	4.Serializable is not reflection safe whereas Parcelable is reflection safe.
 
+**26. Describe different Activity Launch Mode ?**
 
+	There are four types of launch modes:
+	Standard
+	Single top
+	Single task
+	Single instance
+	
+	1. Standard
+	When you don't specify any launch mode, standard is the default one. It creates a new instance of the activity every time you start it
+	
+	2. Single top
+	In this launch mode, if an activity is at the top of the task and you create its instance again, then a new instance will not be created. 
+	Instead onNewIntent() will be called with updated data. If activity is not on top, a new instance will be pushed
+	
+	3. Single task
+	In this launch mode, if the activity doesn't exist in the task, a new instance is created otherwise onNewIntent() is called. 
+	Additionally, activities above it get destroyed
+	
+	4. Single instance
+	For an activity that has a single instance launch mode, a new task is created.
 
+**27. What is Context in Android ?**
+
+	-The Context in Android is actually the context of what we are talking about and where we are currently present. 
+	This will become more clear as we go along with this.
+
+	-Few important points about the context:
+
+	-It is the context of the current state of the application.
+	-It can be used to get information regarding the activity and application.
+	-It can be used to get access to resources, databases, and shared preferences, and etc.
+	-Both the Activity and Application classes extend the Context class.
+	-Context is almost everywhere in Android Development and it is the most important thing in Android Development, 
+	so we must understand to use it correctly.
+
+	-Wrong use of Context can easily lead to memory leaks in an android application.
+
+	-As there are different types of context in Android, we as an Android Developer often get confused about which 
+	context to use at which place. So let’s understand what are those, how to use those, and when to use which one.
+
+	-Mainly two types of context:
+
+	-Application Context: It is the application and we are present in Application. For example - MyApplication(which extends Application class). 
+	It is an instance of MyApplication only.
+	-Activity Context: It is the activity and we are present in Activity. For example - MainActivity. It is an instance of MainActivity only.
+	
+**27. Tell all the Android application components ?**
+
+	There are four different types of app components:
+	1.Activities
+	2.Services
+	3.Broadcast receivers
+	4.Content providers
+	
 	
 
 
