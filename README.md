@@ -799,7 +799,73 @@
 
 	For these reasons, using AsyncTasks for long-running background tasks is generally a bad idea . 
 	Rather, for long-running background tasks, a different mechanism (such as a service) should be employed.
+	
+**64. What are the four states of the Activity Lifecycle ?**
+
+	[active/running, paused, stopped, destroyed]
+	
+**65. How can Activity communicate with services ?**
+
+	Binding services
+	Using Callbacks interfaces
+	
+**66. What is a 9patch image? does it tile or stretch ?**
+
+	9 Patch images are stretchable, repeatable images reduced to their smallest size
+	
+**68. Why we should use MVP / MVVM architectures ?**
+
+	to avoid too much logic code in the UI layer and god activities
+	reusable code that's easier to test
+	avoid duplicated code between common views
+	Easier to maintain
+	we can test logic without using instrumentation tests
+	
+**69. Explain unit test? What does Unit Testing suppose to do ?**
+
+	Unit testing involves breaking your program into pieces and subjecting each piece to a series of tests.
+	These tests can run on a Continues Integration (CI) (namely GitHub actions, Circle Ci, or Travis Ci) and keep the code quality
+	Unit testing is done to ensure that developers write high-quality and errorless code. It is advised to write Unit tests before 
+	writing the actual app, you will write tests beforehand and the actual code will have to adhere to the design guidelines laid out by the test
+	
+**70. What is Instrumentation Test ?**
+
+	Instrumentation tests run on a device or an emulator. In the background, your app will be installed and then a testing app will 
+	also be installed which will control your app, lunching it and running UI tests as needed.
+
+	Instrumentation tests can be used to test none UI logic as well. They are especially useful when you need to test 
+	code that has a dependency on a context.
+	
+**71. What is Espresso Test ?**
+
+	Espresso is a UI test framework (part of the Android Testing Support Library) that allows you to create automated UI tests for your Android app. 
+	Espresso tests run on actual device or emulator (they are instrumentation based tests) and behave as if an actual user is using the 
+	app (i.e. if a particular view is off screen, the test won't be able to interact with it).
+
+	Espresso's simple and extensible API, automatic synchronization of test actions with the UI of the app under test, and rich failure information
+	make it a great choice for UI testing. In many circles Espresso is considered to be a full replacement for Robotium (see this stack overflow 
+	post that compares Robotium to Espresso).
+	
+**72. What is Robolectric Test ?**
+
+	It allows Android applications to be tested on the JVM without an emulator or device. Running Android tests on the JVM usually fails because
+	the Android core libraries included with the SDK, specifically the android.jar file, only contain stub implementations of the Android classes. 
+	The actual implementations of the core libraries are built directly on the device or emulator, so running tests usually 
+	requires one to be active in order to execute.
+
+	So for all of us that want faster executing tests on the JVM, Robolectric saves the day. Robolectric provides implementations of the Android SDK
+	by rewriting the Android core libraries using shadow classes. This gives us the ability to execute our tests on the JVM and achieve much faster 
+	test execution times than if we were running on a device or emulator. in the Project Window. This will show us a full view of everything 
+	contained in the project. The default setting (the Android perspective) hides certain directories (including the unit tests!):
  
+ **73. What is Mokito Test ?**
+
+	Mockito is a mocking framework with a delicious flavor. It has a clean and simple API that allows you to construct beautiful tests. 
+	The tests in Mockito are very readable and provide clear verification errors, so you won’t get a hangover. Now, let’s look at an example 
+	of how to use mockito.
+	
+	Mockito is a mocking framework that tastes really good. It lets you write beautiful tests with a clean & simple API. 
+	Mockito doesn’t give you hangover because the tests are very readable and they produce clean verification errors.
 
 	
 
