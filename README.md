@@ -749,10 +749,37 @@
 	ViewGroup: ViewGroup is the invisible container. It holds View and ViewGroup. For example, LinearLayout is the 
 	ViewGroup that contains Button(View), and other Layouts also. ViewGroup is the base class for Layouts
 	
-**61. What is a SpannableString?
+**61. What is a SpannableString ?**
 
 	A SpannableString has immutable text, but its span information is mutable. Use a SpannableString when your text doesn't need to be 
 	changed but the styling does. Spans are ranges over the text that include styling information like color, heighliting, italics, links, etc
+	
+**62. How would you save Activity state during a screen rotation ?**
+
+	When your orientation changes, you don’t have to manually change to the landscape layout file. Android does this automatically for you. 
+	When orientation changes, Android destroys your current activity and creates a new activity again, this is why you are losing the text.
+
+	Basically, whenever Android destroys and recreates your Activity for orientation change, it calls onSaveInstanceState() before destroying 
+	and calls onCreate() after recreating. Whatever you save in the bundle in onSaveInstanceState, you can get back from the onCreate() parameter.
+
+	private TextView mTextView;
+	private static final String KEY_TEXT_VALUE = "textValue";
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+  		super.onCreate(savedInstanceState);
+  		mTextView = (TextView) findViewById(R.id.main);
+  		if (savedInstanceState != null) {
+      			CharSequence savedText = savedInstanceState.getCharSequence(KEY_TEXT_VALUE);
+      			mTextView.setText(savedText);
+  		}
+	}
+	@Override
+	protected void onSaveInstanceState (Bundle outState) {
+   		super.onSaveInstanceState(outState);
+   		outState.putCharSequence(KEY_TEXT_VALUE, mTextView.getText());
+	}
+	
+**63. 
  
 
 	
