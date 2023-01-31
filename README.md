@@ -866,6 +866,31 @@
 	
 	Mockito is a mocking framework that tastes really good. It lets you write beautiful tests with a clean & simple API. 
 	Mockito doesn’t give you hangover because the tests are very readable and they produce clean verification errors.
+	
+**74. What is a Canvas ?**
+
+	Canvas is a class in Android that performs 2D drawing of different objects onto the screen. The saying “a blank canvas” is very 
+	similar to what a Canvas object is on Android. It is basically, an empty space to draw onto.
+	
+**75. What is ANR and how to prevent it ?**
+
+	ANR stands for Application Not Responding. An ANR will occur if you’re running a process on the UI thread which takes an extended time, 
+	usually around 5 seconds. During this point, the GUI (Graphical User Interface) will lock up which can end in anything the user presses 
+	won’t be actioned. After the 5 seconds approx. has occurred, if the thread still hasn’t recovered then an ANR dialogue box is shown informing 
+	the user that the appliance isn’t responding and can give the user the choice to either wait, in the hope that the app will eventually recover, 
+	or to force close the app.
+	
+	*How to prevent an ANR?
+	
+	Stop doing heavy tasks on the main thread. Instead use worker threads such as IntentService, AsyncTask Handler, or another Thread simply. 
+	Detecting where ANRs happen is straightforward if it’s a permanent block (deadlock acquiring some locks for instance), but harder if it’s 
+	just a short-lived delay. First, re-evaluate your code and appearance for vulnerable spots and long-running operations. 
+	Examples may include using sockets, locks, thread sleeps, and other blocking operations from within the event thread. You should make 
+	sure these all happen in separate threads. If nothing seems the matter, use DDMS and enable the thread view. This shows all the threads 
+	in your application similar to the trace you have. Reproduce the ANR, and refresh the most thread at an equivalent time. 
+	That should show you exactly what’s happening at the time of the ANR. An ANR is going to be triggered for your app when one among the subsequent conditions.
+	
+**
 
 	
 
