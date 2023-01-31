@@ -890,7 +890,28 @@
 	in your application similar to the trace you have. Reproduce the ANR, and refresh the most thread at an equivalent time. 
 	That should show you exactly what’s happening at the time of the ANR. An ANR is going to be triggered for your app when one among the subsequent conditions.
 	
-**
+**76. What is an AsyncTask(Deprecated in API level 30) ?**
+
+	AsyncTask (Asynchronous Task) in Android is an abstract class, or rather a helper class that lets the application perform tedious tasks in 
+	the background and parallelly perform UI changes in the front-end. This is quite similar to Threading but does not constitute any 
+	threading framework. Background tasks such as loading images, downloading music, pictures, files, etc can be performed using AsyncTask
+	
+	Associated member functions are:
+
+	onPreExecute() Optional
+	doInBackground(Params…) Required
+	onProgressUpdate(Progress…) Optional
+	onPostExecute(Result) Optional
+	
+**77. What is a Loader ?**
+
+	Loader is a set of APIs, known as Loader APIs given by Android, to load data asynchronously in activity/fragment.
+	It can fetch data asynchronously without blocking the main thread and it manages it's own lifecycle during onDestroy() and configuration changes.
+	
+	Loaders in Android is an abstract class implementation of Loader and two default classes, which are provided by Android, 
+	I.E. AsyncTaskLoader, and cursor loaders.
+	
+**78. 
 
 	
 
