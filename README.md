@@ -779,7 +779,26 @@
    		outState.putCharSequence(KEY_TEXT_VALUE, mTextView.getText());
 	}
 	
-**63. 
+**63. What is the relationship between the life cycle of an AsyncTask and an Activity? What problems can this result in? 
+	How can these problems be avoided ?**
+	
+	AsyncTask allows you to perform background operations and publish results on the UI thread without having to manipulate threads and/or handlers.
+
+	AsyncTask is not tied to the life cycle of the Activity. If you execute an AsyncTask inside an Activity, and the user rotates the device, 
+	the Activity will be destroyed and a new Activity instance will be created. but the AsyncTask will not die but instead goes on living until it completes. 
+	This results in 2 problems:
+
+	exception
+
+	Then when the AsyncTask does complete, it updates the old activity instance rather the new activity. This can lead to an Exception:
+
+ 	java.lang.IllegalArgumentException:View not attached to window manager if you use.memory leak
+
+	And because the AsyncTask maintains a reference to the old Activty, which prevents the Activity from being garbage collected as long as the 
+	AsyncTask remains alive. This results in a memory leak.
+
+	For these reasons, using AsyncTasks for long-running background tasks is generally a bad idea . 
+	Rather, for long-running background tasks, a different mechanism (such as a service) should be employed.
  
 
 	
