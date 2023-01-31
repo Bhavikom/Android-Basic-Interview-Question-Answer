@@ -911,7 +911,14 @@
 	Loaders in Android is an abstract class implementation of Loader and two default classes, which are provided by Android, 
 	I.E. AsyncTaskLoader, and cursor loaders.
 	
-**78. 
+**78. What is bitmap pooling ?**
+
+	Bitmap pooling is an implementation that tries to reuse the memory of the bitmaps already available instead of allocating new memory every time. 
+	Suppose we need to load a bitmap, we first check our pool to see if there is any bitmap available. If it is available, we take a bitmap from the
+	pool and reuse its memory to load our new bitmap otherwise we create a new bitmap. In case, if we do not need any bitmap, we put that bitmap into
+	that pool instead of recycling it so that we can reuse the memory of that bitmap when needed for a new bitmap.
+	
+**79. 
 
 	
 
