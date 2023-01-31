@@ -1,4 +1,4 @@
-# Android-General-Interview-Question-Answer
+# Android-Basic-Interview-Question-Answer
 
 **1: What is the architecture of Android ?**
 
