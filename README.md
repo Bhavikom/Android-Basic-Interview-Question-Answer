@@ -918,9 +918,54 @@
 	pool and reuse its memory to load our new bitmap otherwise we create a new bitmap. In case, if we do not need any bitmap, we put that bitmap into
 	that pool instead of recycling it so that we can reuse the memory of that bitmap when needed for a new bitmap.
 	
-**79. 
+**79. What is Multidex ?**
 
+	In Java, if we compile our code then that code is converted into a .class file by the compiler because our machine understands that .class file. 
+	The same is the process for the Android Application. In Android, the compiler converts our source code into DEX (Dalvik Executable) file.
 	
+	Before understand Multidex we have to understand DEX and Build System in Android.
+	
+	*Android Build System
+	
+	Before moving on to DEX, let's revise some concepts of the build system of Android. Android compiles the resources and source code of our 
+	app and packages them into APKs. Conversion of our project into an APK requires many tools and involves many processes. 
+	
+	The build process of a typical Android App can be summarized as below:
+
+	The compilers convert the source code into DEX (Dalvik Executable) files, which include the bytecode that runs on Android devices.
+	After having the DEX files, the APK Packager combines the DEX files and compiled resources into a single APK.
+	After that, the APK Packager signs the APK.
+	Before generating the final APK, various methods are followed to optimize the code so as to avoid the unused code.
+	
+	*Multidex in Android
+	
+	In Android, the compilers convert your source code into DEX files. This DEX file contains the compiled code used to run the app. 
+	But there is a limitation with the DEX file. The DEX file limits the total number of methods that can be referenced within a single 
+	DEX file to 64K i.e. 65,536 methods. So, you can't use more than 64K methods in a particular DEX file. These 64K methods include 
+	Android framework methods, library methods, and methods in our code also. This limit of 64K is referred to as the " 64K reference limit ".
+
+	So, if our app exceeds 65,536 methods, we will encounter a build error that indicates our app has reached the limit of the Android 
+	build architecture. The error is as follows:
+
+	Too many field references: 131000; max is 65536.
+	You may try using --multi-dex option.
+	
+	*try the following strategies to avoid using 64K reference methods:
+
+	Manage dependencies: While importing some dependencies for our project, sometimes we import each and every library and use only a few of them.
+	So, instead of keeping all those dependencies, we can keep only the required one.
+	
+	Remove unused code: Enable code shrinking in your project. By doing so, we are not shipping unused code with our APK.
+	
+	*Limitations of Multidex support library
+	
+	1.If your secondary DEX file is larger than the primary DEX file, then you may encounter some Application Not Responding (ANR) error. 
+	In this case, you should apply code shrinking to minimize the size of DEX files and remove unused portions of code.
+	
+	2.If you are targeting API levels lower than 21, test thoroughly on those versions of the platform, because your app might have 
+	issues at startup or when particular groups of classes are loaded.
+	
+	Code Shrinking can reduce or possibly eliminate these issues.
 
 
 	
