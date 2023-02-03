@@ -974,7 +974,8 @@
 
 	AndroidViewModel is a Application context aware ViewModel.
 
-	AndroidViewModel:
+	*AndroidViewModel:
+	
 	public class PriceViewModel extends AndroidViewModel {
 		private PriceRepository priceRepository;
 		public PriceViewModel(@NonNull Application application) {
@@ -983,7 +984,8 @@
     		allPrices = priceRepository.getAllPrices();
 	}
 
-	ViewModel:
+	*ViewModel:
+	
 	public class PriceViewModel extends ViewModel {
 		public PriceViewModel() {
     		super();
