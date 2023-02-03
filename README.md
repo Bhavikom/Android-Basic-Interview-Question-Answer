@@ -966,6 +966,34 @@
 	issues at startup or when particular groups of classes are loaded.
 	
 	Code Shrinking can reduce or possibly eliminate these issues.
+	
+**80. Difference between ViewModel and AndroidViewModel ?**
+
+	AndroidViewModel is subclass of ViewModel. The Difference between them is we can pass Application Context which can be used 
+	whenever Application Context is required for example to instantiate Database in Repository.
+
+	AndroidViewModel is a Application context aware ViewModel.
+
+	AndroidViewModel:
+	public class PriceViewModel extends AndroidViewModel {
+		private PriceRepository priceRepository;
+		public PriceViewModel(@NonNull Application application) {
+    		super(application);
+    		priceRepository= new PriceRepository(application);
+    		allPrices = priceRepository.getAllPrices();
+	}
+
+	ViewModel:
+	public class PriceViewModel extends ViewModel {
+		public PriceViewModel() {
+    		super();
+	}
+	You Should use AndroidViewModel only when you require Application Context.
+	
+	Apart from the difference that AndroidViewModel gives you an application context whereas ViewModel does not. 
+	The important thing that you must understand is that Google itself recommends using ViewModel and not AndroidViewModel.
+
+	So, don't use AndroidViewModel unless it is really necessary.
 
 
 	
