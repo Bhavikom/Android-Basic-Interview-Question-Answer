@@ -1007,6 +1007,12 @@
 	The targetSdkVersion has nothing to do with how your app is compiled or what APIs you can utilize. The targetSdkVersion is supposed 
 	to indicate that you have tested your app on (presumably up to and including) the version you specify. This is more like a certification 
 	or sign off you are giving the Android OS as a hint to how it should handle your app in terms of OS features.
+	
+**82. Types of Dialog box in Android ?**
+
+	1. AlertDialog 2.DatePicker 3. TimePicker 4.CustomDialog 5.ProgressDialog
+	
+**83. 
 
 
 	
