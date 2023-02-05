@@ -1092,6 +1092,14 @@
 	Lifecycle Observer, which observes the activity and keeps track of the lifecycle, and performs an action. The action performed by this 
 	lifecycle Observer depends on the lifecycle of the lifecycle Owner. Every lifecycle owner has a lifecycle and based on the event or state 
 	of the lifecycle of the owner, the lifecycle observer performs the action.
+	
+**85. What is ViewModel in Android Architecture Components ?**
+
+	ViewModel is part of the android architecture component.The ViewModel class is designed to store and manage UI-related data in 
+	a lifecycle-conscious way. ViewModel classes are used to store the data even the configuration changes like rotating screen. 
+	ViewModel is one of the most critical class of the Android Jetpack Architecture Component that support data for UI components. 
+	Its purpose is to hold and manage the UI-related data. Moreover, its main function is to maintain the integrity and allows data
+	to service during configuration changes like screen rotations.
 
 
 	
