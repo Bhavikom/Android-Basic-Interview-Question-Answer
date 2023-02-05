@@ -1012,8 +1012,86 @@
 
 	1. AlertDialog 2.DatePicker 3. TimePicker 4.CustomDialog 5.ProgressDialog
 	
-**83. 
+**83.  Jetpack Architecture Components in Android ?**
 
-
+	Android Jetpack is a set of software components, libraries, tools, and guidance to help in developing robust Android applications.
+	Launched by Google in 2018
 	
+	Its software components have been divided into 4 categories:
+
+	1.Foundation Components
+	2.Architecture Components
+	3.Behavior Components
+	4.UI Components
+
+
+	Further, the following are the list of all Foundation components:
+
+	AppCompat
+	Android KTX
+	Test
+	Multidex
+
+	Further, Architecture Components could be classified as follows: 
+
+	Room
+	WorkManager
+	Lifecycle
+	ViewModel
+	LiveData
+	Navigation
+	Paging
+	Data Binding
+	
+	Further, the following are the list of all Behavior components:
+
+	DownloadManager
+	Media & Playback
+	Permissions
+	Notifications
+	Sharing
+	Slices
+	
+	Further, the following are the list of all UI components:
+
+	Animation & Transition
+	Auto
+	Emoji
+	Fragment
+	Layout
+	Palette
+	TV
+	Wear
+
+**84.  Lifecycle in Android Architecture Components ?**
+
+	Lifecycle is one of the Android Architecture Components which was released by Google to make it easier for all the Android developers. 
+	The Lifecycle is a class/interface which holds the information about the state of an activity/fragment and also it allows other objects to 
+	observe this state by keeping track of it. 
+	
+	The LifeCycle component is concerned with the Android LifeCycle events of a component such as an Activity or a Fragment, 
+	it has three main classes that we’ll deal with:
+
+	Lifecycle
+	Lifecycle Owner
+	Lifecycle Observer
+	
+	1. Lifecycle
+	Lifecycle is a process that tells us about the Events performed on an Activity/Fragment. We have a lifecycle as a class that has
+	two types of enumerations to track the components, State and Event. Event and State are used to determine the lifecycle. 
+	Each event has its own state.
+	
+	2.Lifecycle Owner
+	Every Activity has a Lifecycle. This Activity will be a Lifecycle Owner(any activity or fragment can be called a lifecycle owner).
+	When an activity is initialized LifecycleOwner is the one that will be constructed initially. Any class that implements the 
+	LifeCycleOwner interface indicates that it has Android LifeCycle. For example, starting from Support Library 26.1.0 Fragments 
+	and Activities implement the LifeCycleOwner interface. One can create custom LifeCycleOwner components by implementing the 
+	interface and using a LifeCycleRegistry as described here.
+
+	3. Lifecycle Observer
+	Lifecycle Observer, which observes the activity and keeps track of the lifecycle, and performs an action. The action performed by this 
+	lifecycle Observer depends on the lifecycle of the lifecycle Owner. Every lifecycle owner has a lifecycle and based on the event or state 
+	of the lifecycle of the owner, the lifecycle observer performs the action.
+
+
 	
