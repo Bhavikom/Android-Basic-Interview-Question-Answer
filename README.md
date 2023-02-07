@@ -1116,5 +1116,45 @@
 
 	This attribute is not the only way to limit an activity's exposure to other applications. Permissions can also be used to 
 	limit the external entities that can invoke the activity (see the permission attribute).
+	
+**87. Difference between ACCESS_FINE_LOCATION and ACCESS_COARSE_LOCATION permission ?**
+
+	Location can be determined by two ways:
+	
+	Using NETWORK_PROVIDER
+	Using GPS_PROVIDER
+	
+	*Using NETWORK_PROVIDER
+	
+	The network provider determines the location of the users using cell towers,wifi access points etc. Distance between towers 
+	and user’s position are considered in the case of cell towers. This location provider offers a faster response. Commonly used 
+	for determining location inside the rooms or buildings. Here the GPS coordinates are not able to be obtained. Android permissions 
+	required for using this provider are either,
+	
+	ACCESS_COARSE_LOCATION <uses-permission android:name=”android.permission.ACCESS_COARSE_LOCATION” />
+	Or,
+	ACCESS_FINE_LOCATION <uses-permission android:name=”android.permission.ACCESS_FINE_LOCATION” />
+	
+	*Using GPS_PROVIDER
+	
+	The GPS provider determines the location of the users using satellites. For this, the GPS coordinates are obtained 
+	and used for positioning. The GPS receiver in the smartphone receives the signals from satellites. These signals are 
+	processed and precise locations are determined. It takes more time for response and causes delay in location determination. 
+	It works better in outdoors – direct sky/satellite views and communication occurs. Android permissions required for using
+	this provider only,
+	
+	ACCESS_FINE_LOCATION <uses-permission android:name=”android.permission.ACCESS_FINE_LOCATION” />
+	
+	Difference Between Fine and Coarse Locations
+
+	Fine Location :
+	The Fine location provides better and accurate locations. Requires permission,
+	ACCESS_FINE_LOCATION <uses-permission android:name=”android.permission.ACCESS_FINE_LOCATION” />
+	It gives permission for using both GPS_PROVIDER and NETWORK_PROVIDER or  GPS_PROVIDER only for determining the position.
+	
+	Coarse Location :
+	The Coarse location provides less accurate locations. Requires permission,
+	ACCESS_COARSE_LOCATION <uses-permission android:name=”android.permission.ACCESS_COARSE_LOCATION” />
+	It gives permission for using NETWORK_PROVIDER only for determining the position.
 
 	
