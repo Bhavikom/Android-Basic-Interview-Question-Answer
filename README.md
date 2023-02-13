@@ -1173,3 +1173,14 @@
 
 	So when you don't want your data to be modified use LiveData If you want to modify your data later use MutableLiveData
 	
+**89. What is the difference between setValue() and postValue() ?**
+
+	So, if you’re familiar with LiveData, you’ve probably come across these two LiveData methods: setValue() and postValue(). 
+	So, one question that may have occurred to you is why there is a requirement for two methods setValue and postValue for 
+	the same functionality. Let’s look at an example to find out. Assume you want to use LiveData to update a value. As a result,
+	you will have two options: either update the data on the main thread or update the data on the background thread. 
+	As a result, the use-case of setValue and postValue is limited to these two scenarios.
+
+	When changing the data on the Main thread, use the MutableLiveData class’s setValue method, and when changing the LiveData 
+	on the background thread, use the MutableLiveData class’s postValue method
+	
