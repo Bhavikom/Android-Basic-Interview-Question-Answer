@@ -1157,4 +1157,19 @@
 	ACCESS_COARSE_LOCATION <uses-permission android:name=”android.permission.ACCESS_COARSE_LOCATION” />
 	It gives permission for using NETWORK_PROVIDER only for determining the position.
 
+**88. Difference between Livedata and MutableLiveData ?**
+
+	LiveData has no public method to modify its data.
+	The MutableLiveData class exposes the setValue(T) and postValue(T) methods public and you must use these if you need to 
+	edit the value stored in a LiveData object.
+	
+	LiveData<User> getUser() {
+    		if (userMutableLiveData == null) {
+        		userMutableLiveData = new MutableLiveData<>();
+    		}
+    		return userMutableLiveData
+	}
+	You can't update its value like getUser().setValue(userObject) or getUser().postValue(userObject)
+
+	So when you don't want your data to be modified use LiveData If you want to modify your data later use MutableLiveData
 	
