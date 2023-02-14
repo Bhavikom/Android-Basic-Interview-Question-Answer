@@ -1184,3 +1184,89 @@
 	When changing the data on the Main thread, use the MutableLiveData class’s setValue method, and when changing the LiveData 
 	on the background thread, use the MutableLiveData class’s postValue method
 	
+**90. Memory Leak in Andorid ?**
+
+	A memory leak is basically a failure of releasing unused objects from the memory. As a developer one does not need 
+	to think about memory allocation, memory deallocation, and garbage collection. All of these are the automatic process 
+	that the garbage collector does by itself, but the situation becomes difficult for the garbage collector when the 
+	user is referencing the object, which is in not use anymore, but since that object is being referenced by another 
+	object, garbage collector feels that the unused object is being used by another object and due to this garbage collector 
+	does not free-up the memory of that object, due to which available heap memory get decreases leading to memory shortage
+	and memory leak. The unfreed object is basically called as leaks.
+	
+	Memory leaks are the common causes of application crashes in android apps. Every developer must know how to avoid memory 
+	leaks and what are the circumstances which can lead to memory leaks in android applications. When the RAM resources are 
+	not released when they are no longer needed and if this is done several times, the part of the memory that the operating
+	system has assigned to that particular application may exceed the upper limit and the system can terminate the application
+	causing the application to crash. Holding the references of the object and resources that are no longer needed is the main 
+	cause of the memory leaks in android applications.  As it is known that the memory for the particular object is allocated 
+	within the heap and the object point to certain resources using some object reference. But when the work is completed, 
+	the object references should be freed. But when it is not done, the heap space increases continuously and the rest of the 
+	application has to run on whatever heap space that is left, and ultimately there are high chances that it can lead to memory 
+	leaks in the application. Thus it can be said that memory leaks are a term used when our app goes short of the memory because 
+	some object which is not used but still there are being pointed out by the references and continually occupying the heap space,
+	which ultimately leads to a shortage of space for the other components of the application and thus eventually causing the app to crash.
+	
+	
+*Causes of Memory Leaks and Their Solutions
+
+	1. Using Static Views
+	
+	One should not use static views while developing the application, as static views are never destroyed.
+	
+	2. Using Static Context
+	
+	One should never use the Context as static, because that context will be available through the life of the application, 
+	and will not be restricted to the particular activity.
+	
+	3. Using Code Abstraction Frequently 
+
+	Developers often take the advantage of the abstraction property because it provides the code maintenance and flexibility in code, 
+	but using abstraction might cost a bit to the developer, as while using abstraction one needs to write more code, more code means
+	more time to execute the space and more RAM. So whenever one can avoid the abstraction in the code, it is code as it can lead to fewer memory leaks.
+	
+	4. Unregistered  Listeners
+
+	When the developer uses any kind of listener in his application code, then the developer should not forget to unregister the listener.
+
+	5. Unregistered  Receivers
+
+	Many times the developer needs to register the local broadcast receiver in an activity. However, if the developer does not 
+	unregisters the broadcast receiver there is a strong chance that our app can lead to the memory leak problem as the receiver 
+	will hold a strong reference to the activity. So even if the activity is of no use, it will prevent the garbage collector to 
+	collect the activity for garbage collection, which will ultimately cause the memory leak.
+	
+	6. Inner class Reference
+
+	An inner class is often used by the android developers within their code. However, the nonstatic class will hold the implicit 
+	reference of the parent class which can cause the memory leak problem. 
+	So there can be two solutions that can be proposed to solve this problem:
+
+	One can make the inner class static
+	If one wants to pass the reference of the non-static inner class, then it can be passed using weak reference.
+	
+*Tools to Detect Memory Leak
+
+	1. Leak Canary
+
+	Leak Canary is a memory detection library in Android. It is developed by a square cup company. This library has a unique 
+	ability to decrease down the memory leak and helping developers to get less “MemoryOutOfError”. Leak canary even helps us 
+	to notify where the leak is actually happening.
+	
+	Once the leak canary is installed it automatically detects and reports memory leaks in 4 steps:
+
+	Detecting retained objects.
+	Dumping the heap.
+	Analyzing the heap.
+	Categorizing leaks.
+
+	2. Android Profiler
+
+	It is basically a tool that helps to keep track of memory usage of every application in android. It replaced Android Monitor 
+	in the android version 3.0 and higher. The Android Profiler is compatible with Android 5.0 (API level 21) and higher. 
+	Android Profiler detects the performance of the application in the real-time on the parameters like:
+
+	Battery
+	Memory (In MB)
+	CPU Usage (In %)
+	Network Rate(Rate of uploading and receiving)
