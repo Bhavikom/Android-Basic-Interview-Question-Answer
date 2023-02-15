@@ -1270,3 +1270,54 @@
 	Memory (In MB)
 	CPU Usage (In %)
 	Network Rate(Rate of uploading and receiving)
+	
+**91. EncryptedSharedPreferences in android ?**
+
+	Android Jetpack provides a new library Security which allows you to encrypt/decrypt data with a more robust and secure 
+	mechanism using a much friendly API. This helps you avoid using third-party libraries or writing your own custom 
+	encryption implementations like AES etc. It also recommends to not use Android Keystore System 
+	(previously used for such purposes in Android) and choose Android’s Jetpack Security instead.
+	
+	EncryptedSharedPreferences Wraps the SharedPreferences class and automatically encrypts keys and values using a two-scheme method:
+
+	Keys are encrypted using a deterministic encryption algorithm such that the key can be encrypted and properly looked up.
+	Values are encrypted using AES-256 GCM and are non-deterministic.
+	
+	Required Min-sdk As of today, 23 (Android 6.0)
+	
+	Add Dependency implementation "androidx.security:security-crypto:1.0.0-alpha02"
+	
+	Initialize / Open
+	
+	Just create or fetch a Master Key from the Android Keystore for you, and use it to initialize/open a EncryptedSharedPreferences instance:
+	// Step 1: Create or retrieve the Master Key for encryption/decryption
+	val masterKeyAlias = MasterKeys.getOrCreate(MasterKeys.AES256_GCM_SPEC)
+
+	// Step 2: Initialize/open an instance of EncryptedSharedPreferences
+	val sharedPreferences = EncryptedSharedPreferences.create(
+    		"PreferencesFilename",
+    		masterKeyAlias,
+    		applicationContext,
+    		EncryptedSharedPreferences.PrefKeyEncryptionScheme.AES256_SIV,
+    		EncryptedSharedPreferences.PrefValueEncryptionScheme.AES256_GCM)
+		
+	Save entries
+	sharedPreferences.edit().putString("DATA", saveText.text.toString()).apply()
+	Read entries
+	val value = sharedPreferences.getString("DATA", "")
+	
+	If I put the valueakaita into EncryptedSharedPreferences, though, I get something very different:
+	
+	<?xml version='1.0' encoding='utf-8' standalone='yes' ?>
+	<map>
+    	<string name="AVz2qCVxm1KudCCJKYuxuoaAXoPeWKjG0w==">ASnO9uni11t3m9sNgDJbiYllL/tE+i99TYKfQ0h8XV6AUN0O3rBxBsMmcpw2DCY=</string>
+	<stringname="__androidx_security_crypto_encrypted_prefs_key_keyset__">12a901eb372af4775b09f5b51d20d49428931c5d8e0b17dd103d2169c1879b8b13958274d7e25d3cc052f301461495fd40b70806ae244f456726802460318bdf19dce444e7a60f20c903c5a57140ea8e90a19a1b48559961d145a50000d1c0e22ca918b02ea0cc34e433900f44c00e9c791ecb678f26d293c0226d6c2a9e25e610616ec34241b06410481427a850eeedf85ee4c725d5dbd715b5a8d0e017be9a568a9f960989271d14d2d0531a4408a5d0dae705123c0a30747970652e676f6f676c65617069732e636f6d2f676f6f676c652e63727970746f2e74696e6b2e4165735369764b6579100118a5d0dae7052001</string>
+    <string name="__androidx_security_crypto_encrypted_prefs_value_keyset__">12880189e734bbbf9cfa3bc15b5e53ea8df03341269cf97112a60a1f6482732dd33248b3f821397fb04ef3372ff54336e9045a0b0c0fb7afdf475dbc98a1107d09de66afcc5ad063e5e5b59a7d616e14834e19769bc84de7e5c8716a811814a6cd7a6d72a1c64ce4317f2f482181c437b70f010219ca6407a98bac18f1101c02fd8e2c4a9009ad2a1ebbdc1a4408e9edbbce02123c0a30747970652e676f6f676c65617069732e636f6d2f676f6f676c652e63727970746f2e74696e6b2e41657347636d4b6579100118e9edbbce022001</string>
+</map>
+
+
+
+
+
+
+
