@@ -1315,6 +1315,8 @@
     <string name="__androidx_security_crypto_encrypted_prefs_value_keyset__">12880189e734bbbf9cfa3bc15b5e53ea8df03341269cf97112a60a1f6482732dd33248b3f821397fb04ef3372ff54336e9045a0b0c0fb7afdf475dbc98a1107d09de66afcc5ad063e5e5b59a7d616e14834e19769bc84de7e5c8716a811814a6cd7a6d72a1c64ce4317f2f482181c437b70f010219ca6407a98bac18f1101c02fd8e2c4a9009ad2a1ebbdc1a4408e9edbbce02123c0a30747970652e676f6f676c65617069732e636f6d2f676f6f676c652e63727970746f2e74696e6b2e41657347636d4b6579100118e9edbbce022001</string>
 </map>
 
+	Even more, the encrypted file will change every time we save, making it pretty difficult for anybody to come and crack it.
+
 
 
 
