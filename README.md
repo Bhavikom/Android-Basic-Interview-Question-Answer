@@ -574,7 +574,7 @@
 	Data binding is the process of integrating views in an XML layout with data objects. The Data Binding Library 
 	is responsible for generating the classes required for this procedure.
 	
-**45: How do you protect an Android app from reverse engineering?
+**45: How do you protect an Android app from reverse engineering ?**
 	
 	Make sure you are well aware of prevention tactics and tools such as tamper detection, ProGuard Assistance, and SafetyNet. 
 	List other best practices such as using C++ for important code, securing user credentials, server-side database encryption, 
