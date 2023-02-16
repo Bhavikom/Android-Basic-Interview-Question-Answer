@@ -821,58 +821,12 @@
 	Easier to maintain
 	we can test logic without using instrumentation tests
 	
-**69. Explain unit test? What does Unit Testing suppose to do ?**
-
-	Unit testing involves breaking your program into pieces and subjecting each piece to a series of tests.
-	These tests can run on a Continues Integration (CI) (namely GitHub actions, Circle Ci, or Travis Ci) and keep the code quality
-	Unit testing is done to ensure that developers write high-quality and errorless code. It is advised to write Unit tests before 
-	writing the actual app, you will write tests beforehand and the actual code will have to adhere to the design guidelines laid out by the test
-	
-**70. What is Instrumentation Test ?**
-
-	Instrumentation tests run on a device or an emulator. In the background, your app will be installed and then a testing app will 
-	also be installed which will control your app, lunching it and running UI tests as needed.
-
-	Instrumentation tests can be used to test none UI logic as well. They are especially useful when you need to test 
-	code that has a dependency on a context.
-	
-**71. What is Espresso Test ?**
-
-	Espresso is a UI test framework (part of the Android Testing Support Library) that allows you to create automated UI tests for your Android app. 
-	Espresso tests run on actual device or emulator (they are instrumentation based tests) and behave as if an actual user is using the 
-	app (i.e. if a particular view is off screen, the test won't be able to interact with it).
-
-	Espresso's simple and extensible API, automatic synchronization of test actions with the UI of the app under test, and rich failure information
-	make it a great choice for UI testing. In many circles Espresso is considered to be a full replacement for Robotium (see this stack overflow 
-	post that compares Robotium to Espresso).
-	
-**72. What is Robolectric Test ?**
-
-	It allows Android applications to be tested on the JVM without an emulator or device. Running Android tests on the JVM usually fails because
-	the Android core libraries included with the SDK, specifically the android.jar file, only contain stub implementations of the Android classes. 
-	The actual implementations of the core libraries are built directly on the device or emulator, so running tests usually 
-	requires one to be active in order to execute.
-
-	So for all of us that want faster executing tests on the JVM, Robolectric saves the day. Robolectric provides implementations of the Android SDK
-	by rewriting the Android core libraries using shadow classes. This gives us the ability to execute our tests on the JVM and achieve much faster 
-	test execution times than if we were running on a device or emulator. in the Project Window. This will show us a full view of everything 
-	contained in the project. The default setting (the Android perspective) hides certain directories (including the unit tests!):
- 
- **73. What is Mokito Test ?**
-
-	Mockito is a mocking framework with a delicious flavor. It has a clean and simple API that allows you to construct beautiful tests. 
-	The tests in Mockito are very readable and provide clear verification errors, so you won’t get a hangover. Now, let’s look at an example 
-	of how to use mockito.
-	
-	Mockito is a mocking framework that tastes really good. It lets you write beautiful tests with a clean & simple API. 
-	Mockito doesn’t give you hangover because the tests are very readable and they produce clean verification errors.
-	
-**74. What is a Canvas ?**
+**69. What is a Canvas ?**
 
 	Canvas is a class in Android that performs 2D drawing of different objects onto the screen. The saying “a blank canvas” is very 
 	similar to what a Canvas object is on Android. It is basically, an empty space to draw onto.
 	
-**75. What is ANR and how to prevent it ?**
+**70. What is ANR and how to prevent it ?**
 
 	ANR stands for Application Not Responding. An ANR will occur if you’re running a process on the UI thread which takes an extended time, 
 	usually around 5 seconds. During this point, the GUI (Graphical User Interface) will lock up which can end in anything the user presses 
@@ -890,7 +844,7 @@
 	in your application similar to the trace you have. Reproduce the ANR, and refresh the most thread at an equivalent time. 
 	That should show you exactly what’s happening at the time of the ANR. An ANR is going to be triggered for your app when one among the subsequent conditions.
 	
-**76. What is an AsyncTask(Deprecated in API level 30) ?**
+**71. What is an AsyncTask(Deprecated in API level 30) ?**
 
 	AsyncTask (Asynchronous Task) in Android is an abstract class, or rather a helper class that lets the application perform tedious tasks in 
 	the background and parallelly perform UI changes in the front-end. This is quite similar to Threading but does not constitute any 
@@ -903,7 +857,7 @@
 	onProgressUpdate(Progress…) Optional
 	onPostExecute(Result) Optional
 	
-**77. What is a Loader ?**
+**72. What is a Loader ?**
 
 	Loader is a set of APIs, known as Loader APIs given by Android, to load data asynchronously in activity/fragment.
 	It can fetch data asynchronously without blocking the main thread and it manages it's own lifecycle during onDestroy() and configuration changes.
@@ -911,14 +865,14 @@
 	Loaders in Android is an abstract class implementation of Loader and two default classes, which are provided by Android, 
 	I.E. AsyncTaskLoader, and cursor loaders.
 	
-**78. What is bitmap pooling ?**
+**73. What is bitmap pooling ?**
 
 	Bitmap pooling is an implementation that tries to reuse the memory of the bitmaps already available instead of allocating new memory every time. 
 	Suppose we need to load a bitmap, we first check our pool to see if there is any bitmap available. If it is available, we take a bitmap from the
 	pool and reuse its memory to load our new bitmap otherwise we create a new bitmap. In case, if we do not need any bitmap, we put that bitmap into
 	that pool instead of recycling it so that we can reuse the memory of that bitmap when needed for a new bitmap.
 	
-**79. What is Multidex ?**
+**74. What is Multidex ?**
 
 	In Java, if we compile our code then that code is converted into a .class file by the compiler because our machine understands that .class file. 
 	The same is the process for the Android Application. In Android, the compiler converts our source code into DEX (Dalvik Executable) file.
@@ -967,7 +921,7 @@
 	
 	Code Shrinking can reduce or possibly eliminate these issues.
 	
-**80. Difference between ViewModel and AndroidViewModel ?**
+**75. Difference between ViewModel and AndroidViewModel ?**
 
 	AndroidViewModel is subclass of ViewModel. The Difference between them is we can pass Application Context which can be used 
 	whenever Application Context is required for example to instantiate Database in Repository.
@@ -997,7 +951,7 @@
 
 	So, don't use AndroidViewModel unless it is really necessary.
 	
-**81. What is the difference between compileSdkVersion and targetSdkVersion ?**
+**76. What is the difference between compileSdkVersion and targetSdkVersion ?**
 
 	The compileSdkVersion is the version of the API the app is compiled against. This means you can use Android API features included 
 	in that version of the API (as well as all previous versions, obviously). If you try and use API 16 features but set compileSdkVersion to 15, 
@@ -1008,11 +962,11 @@
 	to indicate that you have tested your app on (presumably up to and including) the version you specify. This is more like a certification 
 	or sign off you are giving the Android OS as a hint to how it should handle your app in terms of OS features.
 	
-**82. Types of Dialog box in Android ?**
+**77. Types of Dialog box in Android ?**
 
 	1. AlertDialog 2.DatePicker 3. TimePicker 4.CustomDialog 5.ProgressDialog
 	
-**83.  Jetpack Architecture Components in Android ?**
+**78.  Jetpack Architecture Components in Android ?**
 
 	Android Jetpack is a set of software components, libraries, tools, and guidance to help in developing robust Android applications.
 	Launched by Google in 2018
@@ -1063,7 +1017,7 @@
 	TV
 	Wear
 
-**84.  Lifecycle in Android Architecture Components ?**
+**79.  Lifecycle in Android Architecture Components ?**
 
 	Lifecycle is one of the Android Architecture Components which was released by Google to make it easier for all the Android developers. 
 	The Lifecycle is a class/interface which holds the information about the state of an activity/fragment and also it allows other objects to 
@@ -1093,7 +1047,7 @@
 	lifecycle Observer depends on the lifecycle of the lifecycle Owner. Every lifecycle owner has a lifecycle and based on the event or state 
 	of the lifecycle of the owner, the lifecycle observer performs the action.
 	
-**85. What is ViewModel in Android Architecture Components ?**
+**80. What is ViewModel in Android Architecture Components ?**
 
 	ViewModel is part of the android architecture component.The ViewModel class is designed to store and manage UI-related data in 
 	a lifecycle-conscious way. ViewModel classes are used to store the data even the configuration changes like rotating screen. 
@@ -1101,7 +1055,7 @@
 	Its purpose is to hold and manage the UI-related data. Moreover, its main function is to maintain the integrity and allows data
 	to service during configuration changes like screen rotations.
 
-**86. what is andorid:exported tag in AndroidManifest file ?**
+**81. what is andorid:exported tag in AndroidManifest file ?**
 
 	This element sets whether the activity can be launched by components of other applications:
 	
@@ -1117,7 +1071,7 @@
 	This attribute is not the only way to limit an activity's exposure to other applications. Permissions can also be used to 
 	limit the external entities that can invoke the activity (see the permission attribute).
 	
-**87. Difference between ACCESS_FINE_LOCATION and ACCESS_COARSE_LOCATION permission ?**
+**82. Difference between ACCESS_FINE_LOCATION and ACCESS_COARSE_LOCATION permission ?**
 
 	Location can be determined by two ways:
 	
@@ -1157,7 +1111,7 @@
 	ACCESS_COARSE_LOCATION <uses-permission android:name=”android.permission.ACCESS_COARSE_LOCATION” />
 	It gives permission for using NETWORK_PROVIDER only for determining the position.
 
-**88. Difference between Livedata and MutableLiveData ?**
+**83. Difference between Livedata and MutableLiveData ?**
 
 	LiveData has no public method to modify its data.
 	The MutableLiveData class exposes the setValue(T) and postValue(T) methods public and you must use these if you need to 
@@ -1173,7 +1127,7 @@
 
 	So when you don't want your data to be modified use LiveData If you want to modify your data later use MutableLiveData
 	
-**89. What is the difference between setValue() and postValue() ?**
+**84. What is the difference between setValue() and postValue() ?**
 
 	So, if you’re familiar with LiveData, you’ve probably come across these two LiveData methods: setValue() and postValue(). 
 	So, one question that may have occurred to you is why there is a requirement for two methods setValue and postValue for 
@@ -1184,7 +1138,7 @@
 	When changing the data on the Main thread, use the MutableLiveData class’s setValue method, and when changing the LiveData 
 	on the background thread, use the MutableLiveData class’s postValue method
 	
-**90. Memory Leak in Andorid ?**
+**85. Memory Leak in Andorid ?**
 
 	A memory leak is basically a failure of releasing unused objects from the memory. As a developer one does not need 
 	to think about memory allocation, memory deallocation, and garbage collection. All of these are the automatic process 
@@ -1271,7 +1225,7 @@
 	CPU Usage (In %)
 	Network Rate(Rate of uploading and receiving)
 	
-**91. EncryptedSharedPreferences in android ?**
+**86. EncryptedSharedPreferences in android ?**
 
 	Android Jetpack provides a new library Security which allows you to encrypt/decrypt data with a more robust and secure 
 	mechanism using a much friendly API. This helps you avoid using third-party libraries or writing your own custom 
